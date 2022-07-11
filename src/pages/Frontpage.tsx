@@ -1,11 +1,9 @@
-import {App} from '../components/Authorizer'
+import { LandingPage } from "../components/LandingPage";
 
-type Props = {}
+type Props = {};
 
 const Frontpage = (props: Props) => {
-  return (
-    <App/>
-  )
-}
+  return <LandingPage />;
+};
 
-export default Frontpage
+export default Frontpage;

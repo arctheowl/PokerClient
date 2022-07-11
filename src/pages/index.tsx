@@ -2,6 +2,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Frontpage from "./Frontpage";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { UserContextProvider } from "../contexts/userContexts";
+
+const client = new ApolloClient({
+  uri: "https://authorizer-production-3b11.up.railway.app/graphql",
+  cache: new InMemoryCache(),
+});
 
 const Home: NextPage = () => {
   return (
