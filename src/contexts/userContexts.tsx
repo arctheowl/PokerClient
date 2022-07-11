@@ -19,6 +19,7 @@ export interface IUser {
   signup_methods?: string;
   updated_at?: number;
   access_token: string
+  id_token?: string
 }
 
 const defaultUser = {

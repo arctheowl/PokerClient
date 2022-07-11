@@ -44,6 +44,7 @@ const LoginSignup = () => {
             onLogin={(loginResponse: any) => {
               let user = loginResponse.user;
               user.access_token = loginResponse.access_token;
+              user.id_token = loginResponse.id_token;
               setCookie("user", JSON.stringify(user));
               window.location.reload()
             }}
