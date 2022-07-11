@@ -2,19 +2,20 @@ import { Authorizer, useAuthorizer } from "@authorizerdev/authorizer-react";
 import Card from "@mui/material/Card";
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
-import NoSsr from "../components/dynamic";
+import { getCookie, setCookie } from "typescript-cookie";
+import { useEffect, useState } from "react";
+import { IUser } from "../contexts/userContexts";
 
 export const LandingPage = () => {
+  const [user, setUser] = useState<IUser>();
 
-  let user
-  if (typeof window !== "undefined") {
-    user = localStorage.getItem("user");
-  }
-  return (
-    <>
-      <NoSsr>{user ? <LandingPage1 /> : <LoginSignup />}</NoSsr>
-    </>
-  );
+  useEffect(() => {
+    if (getCookie("user") !== undefined) {
+      setUser(JSON.parse(getCookie("user")!));
+    }
+  }, []);
+
+  return <>{user ? <LandingPage1 /> : <LoginSignup />}</>;
 };
 
 const LandingPage1 = () => {
@@ -43,7 +44,8 @@ const LoginSignup = () => {
             onLogin={(loginResponse: any) => {
               let user = loginResponse.user;
               user.access_token = loginResponse.access_token;
-              localStorage.setItem("user", JSON.stringify(user));
+              setCookie("user", JSON.stringify(user));
+              window.location.reload()
             }}
           />
         </div>
@@ -52,8 +54,9 @@ const LoginSignup = () => {
   );
 };
 
-export function TokenValidator(Token: any) {
-  const GET_LOCATIONS = gql`
+export const TokenValidator = (Token: string) => {
+
+  const TOKEN_QUERY = gql`
     query {
       validate_jwt_token(
         params: {
@@ -64,7 +67,7 @@ export function TokenValidator(Token: any) {
       }
     }
   `;
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  const { loading, error, data } = useQuery(TOKEN_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
