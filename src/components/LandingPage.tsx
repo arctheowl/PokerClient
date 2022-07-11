@@ -20,12 +20,16 @@ export const LandingPage = () => {
 
 const LandingPage1 = () => {
   return (
-    <div>
+    <div className="grid grid-cols-12 gap-4">
       <Card>
-        <div className="p-8">
+        <div className="p-8 col-start-5 col-span-1">
           <Link href="/profile">
             <a>Profile</a>
           </Link>
+        </div>
+      </Card>
+      <Card>
+        <div className="p-8 col-start-5 col-span-1">
           <Link href="/about">
             <a>About</a>
           </Link>
@@ -46,7 +50,7 @@ const LoginSignup = () => {
               user.access_token = loginResponse.access_token;
               user.id_token = loginResponse.id_token;
               setCookie("user", JSON.stringify(user));
-              window.location.reload()
+              window.location.reload();
             }}
           />
         </div>
@@ -56,7 +60,6 @@ const LoginSignup = () => {
 };
 
 export const TokenValidator = (Token: string) => {
-
   const TOKEN_QUERY = gql`
     query {
       validate_jwt_token(
@@ -75,4 +78,4 @@ export const TokenValidator = (Token: string) => {
 
   console.log(data.validate_jwt_token.is_valid);
   return data.validate_jwt_token.is_valid;
-}
+};

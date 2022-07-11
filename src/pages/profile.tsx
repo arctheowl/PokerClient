@@ -1,4 +1,4 @@
-import ProfileBasic from "../components/profileBasic";
+import ProfileBasic from "../components/profileComponents/profileBasic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { IUser } from "../contexts/userContexts";
