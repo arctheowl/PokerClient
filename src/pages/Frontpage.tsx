@@ -1,9 +1,9 @@
-import { LandingPage } from "../components/LandingPage";
+import { SignupLandingPage } from "../components/LandingPage";
 
 type Props = {};
 
 const Frontpage = (props: Props) => {
-  return <LandingPage />;
+  return <SignupLandingPage />;
 };
 
 export default Frontpage;

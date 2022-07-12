@@ -1,12 +1,15 @@
 import { Authorizer, useAuthorizer } from "@authorizerdev/authorizer-react";
 import Card from "@mui/material/Card";
-import { useQuery, gql } from "@apollo/client";
-import Link from "next/link";
+import { useQuery, gql, useMutation } from "@apollo/client";
 import { getCookie, setCookie } from "typescript-cookie";
 import { useEffect, useState } from "react";
 import { IUser } from "../contexts/userContexts";
+import AreaSelection from "./landingComponents/areaSelection";
+// import { Logout } from "./utils/TokenValuidator";
+import { Button } from "@mui/material";
+import { Logout_QUERY }  from "./utils/TokenValuidator";
 
-export const LandingPage = () => {
+export const SignupLandingPage = () => {
   const [user, setUser] = useState<IUser>();
 
   useEffect(() => {
@@ -15,27 +18,16 @@ export const LandingPage = () => {
     }
   }, []);
 
-  return <>{user ? <LandingPage1 /> : <LoginSignup />}</>;
+  return <>{user ? <LandingPage /> : <LoginSignup />}</>;
 };
 
-const LandingPage1 = () => {
+const LandingPage = () => {
+  const [Logout, { data, loading, error }] = useMutation(Logout_QUERY);
   return (
-    <div className="grid grid-cols-12 gap-4">
-      <Card>
-        <div className="p-8 col-start-5 col-span-1">
-          <Link href="/profile">
-            <a>Profile</a>
-          </Link>
-        </div>
-      </Card>
-      <Card>
-        <div className="p-8 col-start-5 col-span-1">
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-        </div>
-      </Card>
-    </div>
+    <>
+      <AreaSelection areas={["profile", "about", "play"]} />
+      <Button variant="contained" onClick={()=>Logout()}>Logout</Button>
+    </>
   );
 };
 
@@ -79,3 +71,4 @@ export const TokenValidator = (Token: string) => {
   console.log(data.validate_jwt_token.is_valid);
   return data.validate_jwt_token.is_valid;
 };
+
