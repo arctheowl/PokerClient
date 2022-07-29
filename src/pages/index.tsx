@@ -1,14 +1,7 @@
-// @ts-nocheck
 import type { NextPage } from "next";
 import Head from "next/head";
-import Frontpage from "./Frontpage";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { UserContextProvider } from "../contexts/userContexts";
-
-const client = new ApolloClient({
-  uri: "https://authorizer-production-3b11.up.railway.app/graphql",
-  cache: new InMemoryCache(),
-});
+import Image from "next/image";
+import Deck from "../components/deck";
 
 const Home: NextPage = () => {
   return (
@@ -19,8 +12,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-screen h-screen flex flex-col justify-center items-center p-4 bg-gradient-to-br from-blue-400  to-violet-900">
-        <Frontpage />
+      <div className="w-screen h-screen flex flex-col items-center p-4 bg-gradient-to-br from-blue-400  to-violet-900">
+        <h1 className="text-4xl font-bold text-white">Poker Client</h1>
+        <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Texas_Hold%27em_Poker_Table_with_Blinds.svg" width={500} height={500} alt="Texas Hold'em Poker Table" />
+        <Deck />
       </div>
     </>
   );
