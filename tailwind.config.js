@@ -29,8 +29,8 @@ module.exports = {
         },
       },
       animation: {
-          'flip-in': 'flip-in 0.5s ease-out',
-          'flip-out': 'flip-out 0.5s ease-out',
+          'flip-in': 'flip-in 0.3s ease-out',
+          'flip-out': 'flip-out 0.3s ease-out',
       }
   },
   },

@@ -4,7 +4,7 @@ import Card from "./card";
 type Props = {};
 
 const Deck = (props: Props) => {
-  let deck = ["Back"];
+  let deck = [];
 
   for (let j = 1; j < 14; j++) {
     deck.push(j + "C");
@@ -13,7 +13,7 @@ const Deck = (props: Props) => {
     deck.push(j + "D");
   }
 
-  return <div className="flex flex-row gap-3 flex-wrap">
+  return <div className="grid grid-cols-5 ">
     {deck.map((card) => {
       return <Card card={card} key={card} />;
     })}

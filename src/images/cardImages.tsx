@@ -1,4 +1,8 @@
 export const CardImages = {
+  "100CHip": "https://upload.wikimedia.org/wikipedia/commons/f/fa/%24100_chip.svg",
+  "25CHip": "https://upload.wikimedia.org/wikipedia/commons/5/5a/%2425_chip.svg",
+  "5CHip": "https://upload.wikimedia.org/wikipedia/commons/f/f6/%245_chip.svg",
+  "1Chop": "https://upload.wikimedia.org/wikipedia/commons/e/ea/%241_chip_alternate.svg",
   Back: "https://upload.wikimedia.org/wikipedia/commons/8/87/Card_back_05.svg",
   Back2:
     "https://upload.wikimedia.org/wikipedia/commons/d/d8/Atlas_deck_card_back_blue_and_brown.svg",

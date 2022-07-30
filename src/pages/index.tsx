@@ -2,8 +2,17 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Deck from "../components/deck";
+import Grouped from "../components/grouped";
 
 const Home: NextPage = () => {
+  const imgStyle = {
+    userDrag: "none",
+    "user-select": "none",
+    "-moz-user-select": "none",
+    "-webkit-user-drag": "none",
+    "-webkit-user-select": "none",
+    "-ms-user-select": "none",
+  };
   return (
     <>
       <Head>
@@ -12,10 +21,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-screen h-screen flex flex-col items-center p-4 bg-gradient-to-br from-blue-400  to-violet-900">
+      <div className="w-screen h-screen flex flex-col items-center p-4">
         <h1 className="text-4xl font-bold text-white">Poker Client</h1>
-        <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Texas_Hold%27em_Poker_Table_with_Blinds.svg" width={500} height={500} alt="Texas Hold'em Poker Table" />
+        <Image
+          src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Texas_Hold%27em_Poker_Table_with_Blinds.svg"
+          width={1000}
+          height={1000}
+          alt="Texas Hold'em Poker Table"
+          //@ts-ignore
+          style={imgStyle}
+        />
         <Deck />
+        <Grouped />
       </div>
     </>
   );
